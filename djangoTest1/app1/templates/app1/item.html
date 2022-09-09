@@ -7,8 +7,8 @@
   </head>
   <body>
     <h1>{{ item.name }}</h1>
+    <p>Description of {{ item.name }}</p>
     <p>{{ item.description }}</p>
-    <p></p>
     <button id="buy-button">Buy</button>
     <script type="text/javascript">
       var stripe = Stripe("{{ stripe_key }}");
