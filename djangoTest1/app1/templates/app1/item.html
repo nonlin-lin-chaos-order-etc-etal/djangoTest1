@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Buy Item {{ item.id }}</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+  </head>
+  <body>
+    <h1>{{ item.name }}</h1>
+    <p>{{ item.description }}</p>
+    <p></p>
+    <button id="buy-button">Buy</button>
+    <script type="text/javascript">
+      var stripe = Stripe("{{ stripe_key }}");
+      var buyButton = document.getElementById('buy-button');
+      buyButton.addEventListener('click', function() {
+        // Create a new Checkout Session using the server-side endpoint
+        // Redirect to Stripe Session Checkout
+        fetch('/buy/{{ item.id }}', {method: 'GET'})
+        .then(response => response.json())
+        .then(session => stripe.redirectToCheckout({ sessionId: session.id }))
+      });
+    </script>
+  </body>
+</html>
