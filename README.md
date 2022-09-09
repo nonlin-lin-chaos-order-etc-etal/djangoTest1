@@ -5,6 +5,9 @@
 ### Under Ubuntu 20.04.x without Docker
 
 ```shell
+git clone https://github.com/nonlin-lin-chaos-order-etc-etal/djangoTest1.git
+cd djangoTest1
+sudo apt install python3-virtualenv
 virtualenv --python=python3.8 ../djangoTest1venv38
 . ../djangoTest1venv38/bin/activate
 cd djangoTest1
@@ -17,7 +20,7 @@ nano djangoTest1/settings.py
 pip3 install Django stripe
 python manage.py migrate
 python manage.py createsuperuser
-python manage.py runserver
+nohup python manage.py runserver 0.0.0.0:8000 &
 ```
 
 ## Use

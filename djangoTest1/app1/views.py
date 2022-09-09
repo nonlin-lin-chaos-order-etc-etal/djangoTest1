@@ -17,7 +17,7 @@ def index_view(request):
 
 def item_view(request, item_id):
     item = get_object_or_404(Item, pk=item_id)
-    item.price_str = f"0.00".format(item.price/100.0)
+    item.price_str = "{:0,.2f}".format(float(item.price/100.0))
     context = {
         "item": item,
         "stripe_key": settings.STRIPE_PUBLISHABLE_API_KEY,
