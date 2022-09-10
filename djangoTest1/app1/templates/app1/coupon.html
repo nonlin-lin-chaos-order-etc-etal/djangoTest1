@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Coupon</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+  </head>
+  <body>
+    <h1>Coupon</h1>
+    <button id="create-button">Create Coupon</button>
+    <script type="text/javascript">
+      var stripe = Stripe("{{ stripe_key }}");
+      var createButton = document.getElementById('create-button');
+      createButton.addEventListener('click', function() {
+        // Create a new Checkout Session using the server-side endpoint
+        // Redirect to Stripe Session Checkout
+        fetch('/create-coupon/{{ coupon.id }}', {
+          method: 'POST',
+          headers: {
+            'X-CSRFToken': '{{ csrf_token }}'
+          },
+          mode: 'same-origin' // Do not send CSRF token to another domain.
+        })
+        .then((response)=>{
+          createButton.outerHTML = (response.ok ? "Done!" : "Error: " + response)
+        })
+      });
+    </script>
+  </body>
+</html>
