@@ -19,4 +19,4 @@ COPY djangoTest1 .
 # RUN python3 manage.py collectstatic --noinput
 RUN python3 manage.py migrate
 EXPOSE 8001
-ENTRYPOINT /bin/bash -c "cd /code && nohup python3 manage.py runserver 0.0.0.0:8001 &"
+# ENTRYPOINT /bin/bash -c "cd /code && nohup python3 manage.py runserver 0.0.0.0:8001 &"
