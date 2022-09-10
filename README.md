@@ -11,11 +11,13 @@ cp -v settings.py.template settings.py
 
 # specify Django secret key SECRET_KEY
 # specify your Stripe api keys from https://dashboard.stripe.com/test/dashboard
-nano djangoTest1/settings.py 
+nano settings.py
 
 cd ../..
-docker build -t djangoTest1:v2
-docker run --name demo -p 0.0.0.0:8000:8001/tcp -t djangoTest1:v2 
+docker build -t djangotest1:v2 .
+docker run -it --name demo -p 0.0.0.0:8000:8001/tcp -t djangotest1:v2 bash
+python3 manage.py createsuperuser 
+python3 manage.py runserver 0.0.0.0:8001 
 ```
 
 You will need to add items at admin console. To do that, login into docker terminal with `docker attach demo` and
