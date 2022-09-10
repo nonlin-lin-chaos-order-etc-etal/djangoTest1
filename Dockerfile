@@ -3,7 +3,7 @@ FROM ubuntu:20.04
 WORKDIR /code
 
 RUN apt-get update && apt-get upgrade -y
-RUN apt-get install -y python3-pip python3 tzdata
+RUN apt-get install -y python3-pip python3
 
 RUN locale-gen
 ENV LANG en_US.UTF-8
