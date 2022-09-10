@@ -20,9 +20,6 @@ python3 manage.py createsuperuser
 python3 manage.py runserver 0.0.0.0:8001 
 ```
 
-You will need to add items at admin console. To do that, login into docker terminal with `docker attach demo` and
-run `cd /code && python3 manage.py createsuperuser`.
-
 ### Under Ubuntu 20.04.x without Docker
 
 ```shell
