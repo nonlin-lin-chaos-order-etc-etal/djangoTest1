@@ -2,6 +2,25 @@
 
 ## Install
 
+### With Docker
+
+```shell
+git clone https://github.com/nonlin-lin-chaos-order-etc-etal/djangoTest1.git
+cd djangoTest1/djangoTest1/djangoTest1
+cp -v settings.py.template settings.py
+
+# specify Django secret key SECRET_KEY
+# specify your Stripe api keys from https://dashboard.stripe.com/test/dashboard
+nano djangoTest1/settings.py 
+
+cd ../..
+docker build -t djangoTest1:v2
+docker run --name demo -p 0.0.0.0:8000:8001/tcp -t djangoTest1:v2 
+```
+
+You will need to add items at admin console. To do that, login into docker terminal with `docker attach demo` and
+run `cd /code && python3 manage.py createsuperuser`.
+
 ### Under Ubuntu 20.04.x without Docker
 
 ```shell
