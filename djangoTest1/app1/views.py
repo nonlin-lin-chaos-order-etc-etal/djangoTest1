@@ -29,6 +29,16 @@ def order_view(request, order_id):
     return render(request, 'app1/order.html', context)
 
 
+def item_view(request, item_id):
+    item = get_object_or_404(Item, pk=item_id)
+    item.price_str = "{:0,.2f}{}".format(float(item.price/100.0), item.currency.upper())
+    context = {
+        "item": item,
+        "stripe_key": settings.STRIPE_PUBLISHABLE_API_KEY,
+    }
+    return render(request, 'app1/item.html', context)
+
+
 def buy_view(request, order_id):
     order = get_object_or_404(Order, pk=order_id)
     line_items = []

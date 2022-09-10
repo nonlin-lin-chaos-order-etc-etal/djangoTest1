@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Order payment</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+  </head>
+  <body>
+    <h1>Item {{ item.name }} of order {{ item.order.pk }}</h1>
+    <h3>{{ item.name }}</h3>
+    <p>{{ item.description }}</p>
+    <p><strong>{{ item.price_str }}</strong></p>
+    Part of order <a href="/order/{{ item.order.pk }}">{{ item.order.pk }}</a>.
+  </body>
+</html>
